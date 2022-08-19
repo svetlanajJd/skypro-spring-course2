@@ -5,7 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -49,8 +51,8 @@ public class JavaQuestionServiceTest {
     public void allQuestions() {
         Question question = new Question("Вопрос1", "Ответ1");
         out.add(question);
-        List<Question> actual = out.getAll();
-        List<Question> expected = new ArrayList<>();
+        Set<Question> actual = out.getAll();
+        Set<Question> expected = new HashSet<>();
         expected.add(question);
         assertEquals(actual, expected);
     }
@@ -58,9 +60,13 @@ public class JavaQuestionServiceTest {
     @Test
     public void randomQuestion() {
         Question question1 = new Question("Вопрос1", "Ответ1");
+        Question question2 = new Question("Вопрос2", "Ответ2");
+        Question question3 = new Question("Вопрос3", "Ответ3");
         out.add(question1);
+        out.add(question2);
+        out.add(question3);
         Question actual = out.getRandomQuestion();
-        Question expected = new Question("Вопрос1", "Ответ1");
+        Question expected = new Question(actual.getQuestion(),actual.getAnswer());
         assertEquals(actual, expected);
     }
 

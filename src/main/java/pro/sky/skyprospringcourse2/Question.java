@@ -7,6 +7,7 @@ public class Question {
     private final String question;
     private final String answer;
 
+
     public Question(String question, String answer) {
         this.question = question;
         this.answer = answer;
@@ -22,11 +23,10 @@ public class Question {
 
     @Override
     public boolean equals(Object o) {
-        Question questionOther = (Question) o;
-        boolean result;
-        result = question.equals(questionOther.question) &
-                answer.equals(questionOther.answer);
-        return result;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Question question1 = (Question) o;
+        return Objects.equals(question, question1.question) && Objects.equals(answer, question1.answer);
     }
 
     @Override

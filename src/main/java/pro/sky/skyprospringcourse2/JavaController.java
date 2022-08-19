@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/exam/java/")
 
 public class JavaController {
     private QuestionService questionService;
@@ -19,30 +19,28 @@ public class JavaController {
         this.questionService = questionService;
     }
 
-    @GetMapping(path = "/java/add")
+    @GetMapping(path = "add")
     public Question addQuestion(@RequestParam("question") String question,
                                 @RequestParam("answer") String answer) {
         return questionService.add(question, answer);
     }
 
-    @GetMapping(path = "/java/remove")
+    @GetMapping(path = "remove")
     public Question removeQuestion(@RequestParam("question") String question,
                                    @RequestParam("answer") String answer) {
         Question questionOther = new Question(question, answer);
-        questionService.remove(questionOther);
-        return questionOther;
+        return questionService.remove(questionOther);
     }
 
-    @GetMapping(path = "/java/find")
+    @GetMapping(path = "find")
     public Question findQuestion(@RequestParam("question") String question,
                                  @RequestParam("answer") String answer) {
         Question questionOther = new Question(question, answer);
-        questionService.find(questionOther);
-        return questionOther;
+        return questionService.find(questionOther);
     }
 
-    @GetMapping(path = "/java/all")
-    public List<Question> getAllQuestion() {
+    @GetMapping(path = "all")
+    public Set<Question> getAllQuestion() {
         return questionService.getAll();
     }
 

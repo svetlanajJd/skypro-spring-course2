@@ -13,7 +13,7 @@ public interface QuestionService {
 
     Question find(Question question);
 
-    List<Question> getAll();
+    Set<Question> getAll();
 
     Question getRandomQuestion();
 }

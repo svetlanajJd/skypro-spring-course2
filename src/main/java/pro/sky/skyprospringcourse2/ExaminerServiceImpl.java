@@ -13,12 +13,13 @@ public class ExaminerServiceImpl implements ExaminerService {
     }
 
     @Override
-    public List<Question> getQuestions(int amount) {
-
-        List<Question> questions = new ArrayList<>(amount + 1);
+    public Set<Question> getQuestions(int amount) {
         if (amount <= questionService.getAll().size()) {
-            for (int i = 1; i <= amount; i++) {
+            Set<Question> questions = new HashSet<>(amount);
+            int i=1;
+            while (i<=amount){
                 questions.add(questionService.getRandomQuestion());
+                i=i+1;
             }
             return questions;
         }
