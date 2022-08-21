@@ -1,6 +1,10 @@
-package pro.sky.skyprospringcourse2;
+package pro.sky.skyprospringcourse2.impl;
 
 import org.springframework.stereotype.Service;
+import pro.sky.skyprospringcourse2.model.Question;
+import pro.sky.skyprospringcourse2.exception.QuestionException;
+import pro.sky.skyprospringcourse2.exception.QuestionNotFoundException;
+import pro.sky.skyprospringcourse2.QuestionService;
 
 import java.util.*;
 
@@ -12,8 +16,6 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question add(String question, String answer) {
         Question questionOther = new Question(question, answer);
-//        questionsSet.add(questionOther);
-//        return questionOther;
        return add(questionOther);
     }
 
@@ -47,7 +49,7 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Set<Question> getAll() {
-        return questionsSet;
+        return Collections.unmodifiableSet(questionsSet);
     }
 
     @Override
@@ -62,7 +64,5 @@ public class JavaQuestionService implements QuestionService {
           i++;
         }
         return question;
-//        Question numberQuestion=questionsSet.random.nextInt();
-//        return numberQuestion;
     }
 }

@@ -1,4 +1,4 @@
-package pro.sky.skyprospringcourse2;
+package pro.sky.skyprospringcourse2.model;
 
 import java.util.Objects;
 

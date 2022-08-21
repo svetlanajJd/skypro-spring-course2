@@ -3,17 +3,23 @@ package pro.sky.skyprospringcourse2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pro.sky.skyprospringcourse2.exception.QuestionNotFoundException;
+import pro.sky.skyprospringcourse2.impl.JavaQuestionService;
+import pro.sky.skyprospringcourse2.model.Question;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JavaQuestionServiceTest {
     private JavaQuestionService out = new JavaQuestionService();
 
+    @BeforeEach
+    public void beforeEach() {
+        out.getAll().forEach(out::remove);
+    }
 
     @Test
     public void addQuestionAndAnswer() {
@@ -65,9 +71,7 @@ public class JavaQuestionServiceTest {
         out.add(question1);
         out.add(question2);
         out.add(question3);
-        Question actual = out.getRandomQuestion();
-        Question expected = new Question(actual.getQuestion(),actual.getAnswer());
-        assertEquals(actual, expected);
+        assertThat(out.getAll().contains(out.getRandomQuestion()));
     }
 
     @Test

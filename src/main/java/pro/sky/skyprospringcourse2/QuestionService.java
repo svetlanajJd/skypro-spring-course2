@@ -1,7 +1,7 @@
 package pro.sky.skyprospringcourse2;
 
-import java.util.Collection;
-import java.util.List;
+import pro.sky.skyprospringcourse2.model.Question;
+
 import java.util.Set;
 
 public interface QuestionService {
